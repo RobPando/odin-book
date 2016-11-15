@@ -1,0 +1,24 @@
+<% unless user_signed_in? %>
+  <ul class="right hide-on-med-and-down">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <li><i class="material-icons prefix">account_circle</i></li>
+    <li>
+      <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'input-field col s6' %>
+    </li>
+
+    <li><i class="material-icons prefix">vpn_key</i></li>
+    <li><%= f.password_field :password, autocomplete: "off", class: 'input-field col s6' %></li>
+
+    <li>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me, class: 'field' %>
+        <%= f.label :remember_me %>
+      <% end -%>        
+    </li>
+
+    <li class="btn waves-effect waves-light"><%= f.submit "Log in", class: 'action' %></li>
+    
+    <% end %>
+  </ul>
+<% end %>

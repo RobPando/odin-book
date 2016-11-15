@@ -1,0 +1,16 @@
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to " Odin-Book", root_url, class: "brand-logo" %>
+
+    <% unless devise_controller? %>
+      <%= render 'layouts/login_nav' %>
+    <% else %>
+      <% unless user_signed_in? %>
+      <ul class="right hide-on-med-and-down">
+        <li class="waves-effect waves-light btn"><%= link_to "Sign Up", root_url %></li>
+      </ul>
+      <% end %>
+    <% end %>
+    
+  </div>
+</nav>

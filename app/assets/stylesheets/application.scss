@@ -1,0 +1,46 @@
+@import "materialize";
+
+/* Navigation Bar */
+.brand-logo {
+  margin-left: 40px;
+  text-shadow: 1px 1px black;
+}
+nav {
+  background: #782F49
+}
+
+nav ul {
+  margin-right: 40px; 
+}
+
+nav ul .btn {
+  margin-top: 15px;
+}
+
+nav ul li {
+  padding-right: 5px; 
+}
+
+/* Home Page */
+
+.homeright {
+  float: right;
+  margin-right: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: #FFFBFF;
+
+}
+
+.homeleft {
+  float: left;
+  margin-left: 50px;
+}
+/* Forms */
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 white;
+   }
+.login-main {
+  width: 400px;
+}

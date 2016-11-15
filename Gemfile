@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem 'devise'
+gem 'materialize-sass'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
