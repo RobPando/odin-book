@@ -1,19 +1,13 @@
 # Philippians 1:21
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     load_all_users
   end
 
   def show
     load_user
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy
