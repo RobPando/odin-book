@@ -33,16 +33,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:suite) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

@@ -1,5 +1,7 @@
 # Philippians 1:21
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     load_all_users
   end
