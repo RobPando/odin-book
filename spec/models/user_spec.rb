@@ -37,4 +37,18 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
   end
+  context 'successfully creates a user' do
+    before :each do
+      @user = build(:user, email: 'rob@example.com')
+    end
+
+    it 'creates a user' do
+      @user.save
+      expect(@user).to be_valid
+    end
+
+    it 'creates a profile' do
+      expect(@user.profile).to_not be_nil
+    end
+  end
 end

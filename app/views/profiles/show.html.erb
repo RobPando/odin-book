@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag("me.jpg") %>
+        <span class="card-title"><%= @user.full_name %> (<%= @profile.nickname %>)</span>
+      </div>
+      <div class="card-content">
+        <p><%= @profile.description %></p>
+      </div>
+      <div class="card-action">
+        <%= link_to "Edit Profile", user_profile_edit_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>
+            
+<ul>
+<li>Work: <%= @profile.work %></li>
+<li>Education: <%= @profile.education %></li>
+<li>Status: <%= @profile.status %></li>
+<li>Gender: <%= @profile.gender %></li>
+<li>Live in: <%= @profile.live %></li>
+<li>Hometown: <%= @profile.hometown %></li>
+<li>Birthdate: <%= @profile.birthdate %></li>
+<li>Quote: <%= @profile.quote %></li>
+</ul>

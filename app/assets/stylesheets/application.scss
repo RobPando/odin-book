@@ -20,6 +20,12 @@ nav ul .btn {
 nav ul li {
   padding-right: 5px; 
 }
+/* Body */
+
+body div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 /* Home Page */
 
@@ -43,4 +49,9 @@ nav ul li {
    }
 .login-main {
   width: 400px;
+}
+
+.profile-form {
+  margin-left: 200px;
+  margin-right: 200px
 }
