@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one :profile, inverse_of: :user, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   def make_profile
     create_profile

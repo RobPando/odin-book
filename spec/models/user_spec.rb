@@ -39,15 +39,12 @@ RSpec.describe User, type: :model do
   end
   context 'successfully creates a user' do
     before :each do
-      @user = build(:user, email: 'rob@example.com')
+      @user = build(:user, email: 'robby@example.com')
     end
 
-    it 'creates a user' do
+    it 'creates a user and profile' do
       @user.save
       expect(@user).to be_valid
-    end
-
-    it 'creates a profile' do
       expect(@user.profile).to_not be_nil
     end
   end
