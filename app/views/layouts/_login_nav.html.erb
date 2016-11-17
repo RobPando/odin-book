@@ -1,5 +1,5 @@
-<% unless user_signed_in? %>
-  <ul class="right hide-on-med-and-down">
+<ul class="right hide-on-med-and-down">
+  <% unless user_signed_in? %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <li><i class="material-icons prefix">account_circle</i></li>
@@ -20,5 +20,7 @@
     <li class="btn waves-effect waves-light"><%= f.submit "Log in", class: 'action' %></li>
     
     <% end %>
+  <% else %>
+    <li class="btn waves-effect waves-light"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
 <% end %>
