@@ -1,0 +1,6 @@
+<%= form_for @comment, url: post_comments_path(params[:id])  do |f| %>
+
+  <%= f.text_field :reply, placeholder: 'comment...' %>
+
+  <%= f.submit 'Comment' %>
+<% end %>

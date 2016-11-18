@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get '/profile/edit', to: 'profiles#edit'
     put '/profile', to: 'profiles#update'
   end
-  resources :posts
-  resources :comments, except: [:show]
+
+  resources :posts do
+    resources :comments, only: [:create]
+  end
 end

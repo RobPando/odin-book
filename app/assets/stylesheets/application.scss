@@ -6,7 +6,7 @@
   text-shadow: 1px 1px black;
 }
 nav {
-  background: #782F49
+  background: #782F49;
 }
 
 nav ul {
@@ -21,6 +21,7 @@ nav ul li {
   padding-right: 5px; 
 }
 /* Body */
+
 
 /* Home Page */
 
@@ -54,6 +55,11 @@ nav ul li {
   margin-right: 200px
 }
 
+/* Profile */
+
+#info-col {
+  background: #782F49;
+}
 
 /* Posts */
 
@@ -66,6 +72,19 @@ nav ul li {
   height: 80px;
   resize: none;
 }
+#post-alone {
+  width: 550px;
+}
+
+#title-post {
+  text-align-last: left;
+}
+
+#comment-title {
+  background: #782F49;
+  color: white;
+}
+
 
 
 

@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :posts, dependent: :destroy, inverse_of: :user
+  has_many :comments, dependent: :destroy, inverse_of: :user
   has_one :profile, dependent: :destroy
 
   def make_profile

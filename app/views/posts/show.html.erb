@@ -1,0 +1,27 @@
+<center>  
+  <ul class="collection" id="post-alone">
+    <li class="collection-item" id="comment-title">Post</li>
+
+    <li class="collection-item avatar" align="left">
+      <%= image_tag('me.jpg', class: 'circle') %>
+      <span class="title"><%= link_to @post.user.full_name, user_profile_path(@post.user) %></span>
+      <p><%= @post.content %></p>
+    </li>
+
+    
+    <li class="collection-item" id="comment-title">Comments:</li>
+      <% if @comments.any? %>
+      <% @comments.each do |comment| next if !comment.valid? %>
+    <li class="collection-item avatar", align="left">
+        <%= image_tag('me.jpg', class: 'circle') %>
+        <span class="title"><%= link_to "#{comment.user.full_name}", user_profile_path(comment.user) %></span>
+        <p><%= comment.reply %></p>
+    </li>
+      <% end %>
+    <% end %>
+    
+    <li class="collection-item">
+      <%= render 'shared/comment_form' %>
+    </li>
+  </ul>
+</center>

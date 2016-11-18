@@ -1,6 +1,12 @@
 class CommentsController < ApplicationController
   def create
-    # Implement
+    @comment = current_user.comments.build(comment_params)
+    @comment.post_id = params[:post_id]
+    if @comment.save
+      redirect_to post_path(@comment.post)
+    else
+      redirect_to root_url
+    end
   end
 
   private
@@ -8,4 +14,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:reply)
   end
+
 end

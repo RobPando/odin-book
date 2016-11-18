@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    load_post
+    load_comments
+    build_comment
+  end
+
   def create
     build_post
     @post.save
@@ -15,5 +21,17 @@ class PostsController < ApplicationController
 
   def build_post
     @post = current_user.posts.build(post_params)
+  end
+
+  def load_post
+    @post = Post.find(params[:id])
+  end
+
+  def load_comments
+    @comments = @post.comments
+  end
+
+  def build_comment
+    @comment = @post.comments.build
   end
 end

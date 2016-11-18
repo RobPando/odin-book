@@ -1,8 +1,7 @@
 <div class="post-form">
   <%= form_for @post do |f| %>
     
-    <%= f.label :content %>
-    <%= f.text_area :content, class: 'post-content' %> 
+    <%= f.text_area :content, placeholder: 'Say some...', class: 'post-content' %> 
 
     <%= f.submit 'Post' %>  
 
