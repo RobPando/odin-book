@@ -1,8 +1,10 @@
-<%= form_for @post do |f| %>
-  
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+<div class="post-form">
+  <%= form_for @post do |f| %>
+    
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'post-content' %> 
 
-  <%= f.submit 'Post' %>
+    <%= f.submit 'Post' %>  
 
-<% end %>
+  <% end %>
+</div>

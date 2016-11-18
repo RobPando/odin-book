@@ -1,21 +1,20 @@
-<div class="row">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'col s12') do |f| %>
   <%= devise_error_messages! %>
 
       <div class="row">
-        <div class="input-field col s6">
-          <%= f.label :first_name %><br />
+        <div class="input-field col s12">
+          <%= f.label :first_name %>
           <%= f.text_field :first_name, autofocus: true, id: 'first_name', class: 'validate' %>
         </div>
-        <div class="input-field col s6">
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name, autofocus: true, class: 'validate', id: 'last_name' %>
+        <div class="input-field col s12">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, autofocus: true, id: 'last_name', class: 'validate' %>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <%= f.label :email %><br />
+          <%= f.label :email %>
           <%= f.email_field :email, autofocus: true, class: 'validate', id: 'email' %>
         </div>
       </div>
@@ -25,14 +24,14 @@
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
+          <% end %>
           <%= f.password_field :password, autocomplete: "off", class: 'validate', id: 'password' %>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, autocomplete: "off", id: 'password', class: 'validate' %>
         </div>
       </div>
@@ -42,5 +41,4 @@
         </div>
       </div>  
 <% end %>
-</div>
             

@@ -1,0 +1,7 @@
+<ul class="collection">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <li class="collection-item"><%= post.content %></li>
+    <% end %>
+  <% end %>
+</ul>

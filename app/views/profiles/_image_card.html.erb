@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col s12 m10">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag("me.jpg") %>
+        <span class="card-title"><%= @user.full_name %> (<%= @profile.nickname %>)</span>
+      </div>
+      <div class="card-content">
+        <p><%= @profile.description %></p>
+      </div>
+      <div class="card-action">
+        <%= link_to "Edit Profile", user_profile_edit_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>

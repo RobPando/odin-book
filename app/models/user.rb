@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
   def make_profile
-    create_profile
+    create_profile unless profile
   end
 
   def full_name

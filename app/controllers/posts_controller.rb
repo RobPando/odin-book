@@ -1,22 +1,19 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @post = Post.new
-  end
-
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to current_user
-    else
-      render 'new'
-    end
+    build_post
+    @post.save
+    redirect_to root_url
   end
 
   private
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def build_post
+    @post = current_user.posts.build(post_params)
   end
 end

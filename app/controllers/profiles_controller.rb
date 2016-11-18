@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   def show
     load_user
+    build_post
+    load_posts
     load_profile
   end
 
@@ -47,5 +49,13 @@ class ProfilesController < ApplicationController
 
   def load_profile
     @profile = @user.profile
+  end
+
+  def build_post
+    @post = @user.posts.build
+  end
+
+  def load_posts
+    @posts = @user.posts.all
   end
 end
