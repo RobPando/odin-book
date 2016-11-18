@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  before_save :format_first_name, :format_last_name
   after_save :make_profile
 
   validates :first_name, :last_name, presence: true
@@ -17,5 +18,13 @@ class User < ApplicationRecord
 
   def full_name
     first_name + ' ' + last_name
+  end
+
+  def format_first_name
+    self.first_name = first_name.downcase.capitalize
+  end
+
+  def format_last_name
+    self.last_name = last_name.downcase.capitalize
   end
 end

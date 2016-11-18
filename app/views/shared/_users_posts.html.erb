@@ -2,13 +2,13 @@
   <% if @posts.any? %>
     <% @posts.each do |post| %>
       <li class="collection-item avatar">
-
+<!-- All Posts -->
         <%= image_tag('me.jpg', class: 'circle') %>
         <span class="title" id="title-post"><%= link_to post.user.full_name, post.user %></span>
         <p><%= post.content %></p>
 
         <%= link_to content_tag(:i, 'comment', class: 'tiny material-icons'), post_path(post) %>
-
+<!-- Comments Count Per Post -->
         <% if post.comments.any? %>
           <%= post.comments.count %>
         <% end %>

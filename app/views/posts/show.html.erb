@@ -1,4 +1,4 @@
-<center>  
+<center>        <!-- Original Post Box -->
   <ul class="collection" id="post-alone">
     <li class="collection-item" id="comment-title">Post</li>
 
@@ -8,7 +8,7 @@
       <p><%= @post.content %></p>
     </li>
 
-    
+                <!-- Comments -->    
     <li class="collection-item" id="comment-title">Comments:</li>
       <% if @comments.any? %>
       <% @comments.each do |comment| next if !comment.valid? %>
@@ -19,7 +19,7 @@
     </li>
       <% end %>
     <% end %>
-    
+
     <li class="collection-item">
       <%= render 'shared/comment_form' %>
     </li>

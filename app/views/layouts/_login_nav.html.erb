@@ -1,3 +1,4 @@
+                          <!-- NOT Signed in nav bar -->
 <ul class="right hide-on-med-and-down">
   <% unless user_signed_in? %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -21,6 +22,16 @@
     
     <% end %>
   <% else %>
+                        <!-- Signed in nav bar -->
+    <li>
+       <%= form_tag '/users', method: :get do %>
+        <div class="input-field">
+          <%= search_field_tag :search %>
+          <%= label_tag :search, content_tag(:i, 'search', class: 'material-icons') %>
+          <i class="material-icons">close</i>
+        </div>
+      <% end %>
+    </li>
     <li class="btn waves-effect waves-light"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
 <% end %>

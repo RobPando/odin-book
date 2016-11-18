@@ -3,7 +3,15 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    load_all_users
+    if params[:search]
+      if params[:search].split(' ').size == 2
+        scoped_users
+      else
+        first_name_users
+      end
+    else
+      load_all_users
+    end
   end
 
   def show
@@ -27,5 +35,19 @@ class UsersController < ApplicationController
 
   def load_user
     @user ||= User.find(params[:id])
+  end
+
+  def first_name_users
+    @users = fetch_all.where(first_name: params[:search].downcase.capitalize)
+  end
+
+  def scoped_users
+    split_names
+    @users = fetch_all.where(first_name: @name.first.downcase.capitalize,
+                             last_name: @name.last.downcase.capitalize)
+  end
+
+  def split_names
+    @name = params[:search].split(' ')
   end
 end
