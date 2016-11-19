@@ -1,9 +1,9 @@
 <center>        
   <ul class="collection" id="post-alone">
     <li class="collection-item" id="comment-title">Friend Requests</li>
-    <% if current_user.requested_friends.any? %>
+    <% if current_user.friend_requests.any? %>
 
-    <% current_user.requested_friends.each do |request| %>
+    <% current_user.friend_requests.each do |request| %>
     <li class="collection-item avatar" align="left">
       <%= image_tag('me.jpg', class: 'circle') %>
       <span class="title"><%= link_to requesters_name(request.user_id), user_profile_path(request.user_id) %></span>

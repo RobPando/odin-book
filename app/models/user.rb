@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, inverse_of: :user
   has_one :profile, dependent: :destroy
 
+  # has_many :friend_requests, -> { where(accepted: false) }, class_name: 'Friendship'
   has_many :requested_friends, -> { where(accepted: false) }, class_name: 'Friendship',
                                                               foreign_key: :user_id
 
