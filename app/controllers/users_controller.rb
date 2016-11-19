@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     load_user
+    redirect_to user_profile(@user)
   end
 
   def destroy

@@ -12,8 +12,25 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, inverse_of: :user
   has_one :profile, dependent: :destroy
 
+  has_many :requested_friends, -> { where(accepted: false) }, class_name: 'Friendship',
+                                                              foreign_key: :user_id
+
+  has_many :friendships
+  has_many :friends, -> { where(accepted: true) }, through: :friendships
+
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
+
   def make_profile
     create_profile unless profile
+  end
+
+  def send_friend_request(other_user)
+    requested_friends.create(friend_id: other_user)
+  end
+
+  def cancel_friend_request(other_user)
+    requested_friends.find_by(friend_id: other_user).destroy
   end
 
   def full_name
