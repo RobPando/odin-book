@@ -5,8 +5,8 @@
 
     <% current_user.friend_requests.each do |request| %>
     <li class="collection-item avatar" align="left">
-      <%= image_tag('me.jpg', class: 'circle') %>
-      <span class="title"><%= link_to requesters_name(request.user_id), user_profile_path(request.user_id) %></span>
+      <%= image_tag('#', class: 'circle') %>
+      <span class="title"><%= link_to request.user.full_name, user_profile_path(request.user) %></span>
       <p><%= link_to 'Accept', friendship_path(request), method: :put %></p>
     </li>
     <% end %>

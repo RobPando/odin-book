@@ -6,4 +6,7 @@ module ProfilesHelper
      ['Married'],
      ['Divorced']]
   end
+
+  def friendship_status_button
+  end
 end

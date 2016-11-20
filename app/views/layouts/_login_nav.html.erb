@@ -35,10 +35,7 @@
 
     <li><%= link_to "Profile", user_profile_path(current_user) %></li>
     <li><%= link_to "Home", '#' %></li>
-    <li>
-      <span class="new badge" data-badge-caption="__1"></span>
-      <%= link_to content_tag(:i, 'supervisor_account', class: 'material-icons'), '#' %>
-    </li>
+    <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><i class="material-icons right">supervisor_account</i></a></li>
     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
   </ul>
 <% end %>

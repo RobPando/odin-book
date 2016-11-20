@@ -4,6 +4,23 @@
   <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
 </ul>
 
+<% if user_signed_in? %>
+<ul id="dropdown2" class="dropdown-content">
+  <% if load_friend_requests.any? %>
+    <% load_friend_requests.each do |request| %>
+      <li class="collection-item avatar">
+        <%= image_tag('#', class: 'circle') %>
+        <span class="title"><%= link_to request.user.full_name, user_profile_path(request.user) %></span>
+        <p><%= link_to 'Accept', friendship_path(request), method: :put %></p>
+      </li>
+      
+    <% end %>
+  <% else %>
+    <li><%= link_to 'No requests', '#' %></li>
+    <li class="divider"></li>
+  <% end %>
+</ul>
+<% end %>
 <nav>
   <div class="nav-wrapper">
     <%= link_to " Odin-Book", root_url, class: "brand-logo" %>
