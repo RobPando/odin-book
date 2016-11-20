@@ -22,6 +22,8 @@ class FriendshipsController < ApplicationController
 
   # Cancel or Ignore Friendship or request
   def destroy
+    Friendship.find(params[:id]).destroy
+    redirect_to root_url
   end
 
   private

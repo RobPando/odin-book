@@ -1,5 +1,5 @@
 <%= form_for(current_user.requested_friends.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :friend_id, params[:user_id] %></div>
+  <div><%= hidden_field_tag :friend_id, @user.id %></div>
   
   <%= f.submit 'Add Friend', class: "btn waves-effect waves-light" %>
 

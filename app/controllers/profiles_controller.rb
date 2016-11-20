@@ -17,7 +17,6 @@ class ProfilesController < ApplicationController
     load_profile
 
     insert_attributes_to_profile
-
     if @profile.save
       redirect_to user_profile_path(@user)
     else
