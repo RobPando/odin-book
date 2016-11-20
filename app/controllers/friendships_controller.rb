@@ -1,4 +1,11 @@
 class FriendshipsController < ApplicationController
+
+  def index
+    load_user
+    all_friends
+    @friendships << all_inverse_friends
+  end
+
   # Request friendship
   def create
     find_user
@@ -19,6 +26,18 @@ class FriendshipsController < ApplicationController
   end
 
   private
+
+  def load_user
+    @user = User.find(params[:user_id])
+  end
+
+  def all_friends
+    @friendships = @user.friends
+  end
+
+  def all_inverse_friends
+    @inverse_friends = @user.inverse_friends
+  end
 
   def find_request
     @request = Friendship.find(params[:id])

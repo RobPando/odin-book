@@ -5,7 +5,7 @@
     <%= render 'accept_request' %>
   <% elsif current_user.already_requested?(@user) %>
     <%= render 'cancel_request' %>
-  <% else #TODO %> 
+  <% else %> 
     <%= render 'friend_request' %>
   <% end %>
 <% end %>

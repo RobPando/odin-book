@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/profile', to: 'profiles#show'
     get '/profile/edit', to: 'profiles#edit'
     put '/profile', to: 'profiles#update'
+    get '/friends', to: 'friendships#index'
   end
 
   resources :posts do
