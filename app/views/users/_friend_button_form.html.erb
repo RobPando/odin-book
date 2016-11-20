@@ -1,0 +1,11 @@
+<% unless current_user == @user %>
+  <% if current_user.friends?(@user) %>
+    <%= render 'unfriend' %>
+  <% elsif current_user.has_request?(@user) %>
+    <%= render 'accept_request' %>
+  <% elsif current_user.already_requested?(@user) %>
+    <%= render 'cancel_request' %>
+  <% else #TODO %> 
+    <%= render 'friend_request' %>
+  <% end %>
+<% end %>

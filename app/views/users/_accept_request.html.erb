@@ -1,0 +1,3 @@
+<%= form_for(current_user.friend_requests.find_by(user_id: @user), method: :put, remote: true) do |f| %>
+  <%= f.submit "Accept request", class: "btn waves-effect waves-light" %>
+<% end %>

@@ -12,15 +12,20 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, inverse_of: :user
   has_one :profile, dependent: :destroy
 
-  # has_many :friend_requests, -> { where(accepted: false) }, class_name: 'Friendship'
-  has_many :requested_friends, -> { where(accepted: false) }, class_name: 'Friendship',
-                                                              foreign_key: :user_id
+  # All the users thats are requesting to be friends with current user
+  has_many :friend_requests, -> { where(accepted: false) }, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :requesters, through: :friend_requests, source: :user
 
+  # All the users current user has sent requests to be friends with
+  has_many :requested_friends, -> { where(accepted: false) }, class_name: 'Friendship', foreign_key: :user_id
+  has_many :requestees, through: :requested_friends, source: :friend
+
+  # Established friendships through acceptence
   has_many :friendships, -> { where(accepted: true) }
   has_many :friends, through: :friendships
 
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
-  has_many :inverse_friends, through: :inverse_friendships, source: :user
+  # has_many :inverse_friendships, -> { where(accepted: true) }, class_name: 'Friendship', foreign_key: :friend_id
+  # has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   def make_profile
     create_profile unless profile
@@ -32,6 +37,18 @@ class User < ApplicationRecord
 
   def cancel_friend_request(other_user)
     requested_friends.find_by(friend_id: other_user).destroy
+  end
+
+  def friends?(other_user)
+    friends.include?(other_user)
+  end
+
+  def already_requested?(other_user)
+    requestees.include?(other_user)
+  end
+
+  def request_from?(other_user)
+    requesters.include?(other_user)
   end
 
   def full_name
