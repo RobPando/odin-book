@@ -17,7 +17,6 @@ class FriendshipsController < ApplicationController
   def update
     find_request
     accept_request
-    @request.update
     redirect_to root_url
   end
 
@@ -44,7 +43,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_request
-    @request.accepted = true
+    @request.update(accepted: true)
   end
 
   def find_user
