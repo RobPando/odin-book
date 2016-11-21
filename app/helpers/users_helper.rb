@@ -14,4 +14,8 @@ module UsersHelper
   def find_inversefriendship(other_user_id)
     current_user.inverse_friendships.find_by(user_id: other_user_id)
   end
+
+  def owner?(user)
+    current_user == user
+  end
 end

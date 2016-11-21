@@ -3,7 +3,7 @@
     <li class="collection-item" id="comment-title">Post</li>
 
     <li class="collection-item avatar" align="left">
-      <%= image_tag('me.jpg', class: 'circle') %>
+      <%= image_tag('user.png', class: 'circle') %>
       <span class="title"><%= link_to @post.user.full_name, user_profile_path(@post.user) %></span>
       <p><%= @post.content %></p>
     </li>
@@ -13,7 +13,7 @@
       <% if @comments.any? %>
       <% @comments.each do |comment| next if !comment.valid? %>
     <li class="collection-item avatar", align="left">
-        <%= image_tag('me.jpg', class: 'circle') %>
+        <%= image_tag('user.png', class: 'circle') %>
         <span class="title"><%= link_to "#{comment.user.full_name}", user_profile_path(comment.user) %></span>
         <p><%= comment.reply %></p>
     </li>

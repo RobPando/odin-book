@@ -20,6 +20,15 @@ nav ul .btn {
 nav ul li {
   padding-right: 5px; 
 }
+
+.accept-btn {
+  color: green;
+}
+
+.ignore-btn {
+  color: red;
+}
+
 /* Body */
 
 
@@ -39,6 +48,9 @@ nav ul li {
 
 .homeleft {
   float: left;
+  .btn {
+    background: #0D89FF;
+  }
 }
 
 /* Forms */

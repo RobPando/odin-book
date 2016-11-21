@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem 'devise'
 gem 'materialize-sass'
+gem 'will_paginate'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :verify_owner, only: [:edit, :update]
+  def index
+    @post = current_user.posts.build
+    @posts_feed = current_user.feed
+    @posts_feed += current_user.inverse_feed
+  end
 
   def show
     load_post

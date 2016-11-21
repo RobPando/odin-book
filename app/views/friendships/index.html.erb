@@ -1,0 +1,16 @@
+<center>        
+  <ul class="collection">
+    <li class="collection-item" id="comment-title"><%= @user.first_name %>'s Friends</li>
+
+    <% if @friendships.any? %>
+      <% @friendships.each do |friend| %>
+    <li class="collection-item avatar" align="left">
+      <%= image_tag('user.png', class: 'circle') %>
+      <span class="title"><%= link_to friend.full_name, user_profile_path(friend) %></span>
+    </li>
+     <% end %>
+     <% else %>
+     <li>No content.</li>
+    <% end %>
+  </ul>
+</center>

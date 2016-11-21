@@ -1,6 +1,7 @@
 # Philippians 1:21
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :verify_owner, only: [:destroy]
 
   def index
     if params[:search]
@@ -50,5 +51,10 @@ class UsersController < ApplicationController
 
   def split_names
     @name = params[:search].split(' ')
+  end
+
+  def verify_owner
+    load_user
+    redirect_to root_url unless owner?(@user)
   end
 end

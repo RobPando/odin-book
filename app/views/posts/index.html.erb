@@ -1,7 +1,30 @@
-<ul>
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <li><%= post.content %></li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="row">  
+  <div class="col s2">
+  </div>
+  <center> 
+  <div class='col s8'>
+  <div class="section">
+      <%= render 'shared/post_form' %>
+    </div>
+    <div class="divider"></div>       
+      <ul class="collection" align="left">
+        <li class="collection-item" id="comment-title">Feed</li>
+          <% if @posts_feed.any? %>
+            <% @posts_feed.each do |post| %>
+              <li class="collection-item avatar">
+                <%= image_tag('user.png', class: 'circle') %>
+                <span class="title" id="title-post"><%= link_to post.user.full_name, post.user %></span>
+                <p><%= post.content %></p>
+                <%= link_to content_tag(:i, 'comment', class: 'tiny material-icons'), post_path(post) %>
+                <% if post.comments.any? %>
+                  <%= post.comments.count %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+      </ul>
+  </div>
+  </center>
+  <div class='col s2'>
+  </div>
+</div>

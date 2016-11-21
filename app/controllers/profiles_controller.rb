@@ -1,10 +1,14 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :verify_owner, only: [:edit, :update]
   def show
     load_user
     build_post
-    build_comment
-    load_posts
     load_profile
+    load_posts
+    unless owner?(@user)
+      @posts = [] unless they_are_friends?(@user)
+    end
   end
 
   def edit
@@ -44,7 +48,7 @@ class ProfilesController < ApplicationController
   end
 
   def load_user
-    @user = User.find(params[:user_id])
+    @user ||= User.find(params[:user_id])
   end
 
   def load_profile
@@ -55,11 +59,16 @@ class ProfilesController < ApplicationController
     @post = @user.posts.build
   end
 
-  def build_comment
-    
-  end
-
   def load_posts
     @posts = @user.posts.all
+  end
+
+  def verify_owner
+    load_user
+    redirect_to root_url unless owner?(@user)
+  end
+
+  def they_are_friends?(user)
+    current_user.friends?(user) || current_user.inverse_friends?(user)
   end
 end

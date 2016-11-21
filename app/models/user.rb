@@ -57,6 +57,18 @@ class User < ApplicationRecord
     requesters.include?(other_user)
   end
 
+  def feed
+    friends_ids = "SELECT user_id FROM friendships
+                   WHERE friend_id = #{id}"
+    Post.where("user_id IN (#{friends_ids}) OR user_id = :user_id", user_id: id)
+  end
+
+  def inverse_feed
+    inverse_friends_ids = "SELECT friend_id FROM friendships
+                           WHERE user_id = :user_id"
+    Post.where("user_id IN (#{inverse_friends_ids})", user_id: id)
+  end
+
   def full_name
     first_name + ' ' + last_name
   end
