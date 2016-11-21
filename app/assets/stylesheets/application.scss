@@ -30,7 +30,15 @@ nav ul li {
 }
 
 /* Body */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
+  main {
+    flex: 1 0 auto;
+  }
 
 /* Home Page */
 
@@ -97,7 +105,10 @@ nav ul li {
   color: white;
 }
 
-
+/* Footer */
+body .page-footer {
+  background: #782F49;
+}
 
 
 
