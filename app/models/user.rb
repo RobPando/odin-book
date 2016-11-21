@@ -38,6 +38,10 @@ class User < ApplicationRecord
     end
   end
 
+  def password_required?
+    super && provider.blank?
+  end
+
   def make_profile
     create_profile unless profile
   end
