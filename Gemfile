@@ -15,6 +15,7 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

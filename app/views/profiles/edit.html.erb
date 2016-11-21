@@ -7,7 +7,18 @@
 <center class="profile-form">
 <h4>Edit Profile</h4>
 <div class="row">
-  <%= form_for @profile, url: user_profile_path(@user), method: :put do |f| %>
+  <%= form_for @profile, url: user_profile_path(@user), method: :put, html: { multipart: true } do |f| %>
+
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+
     <div class="row">
       <div class="input-field col s12">
        <%= f.label :nickname %>

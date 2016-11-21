@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <li class="collection-item avatar">
 <!-- All Posts -->
-        <%= image_tag('user.png', class: 'circle') %>
+        <%= image_tag(post.user.profile.avatar.url, class: 'circle') %>
         <span class="title" id="title-post"><%= link_to post.user.full_name, post.user %></span>
         <p><%= post.content %></p>
 
@@ -12,6 +12,9 @@
         <% if post.comments.any? %>
           <%= post.comments.count %>
         <% end %>
+        <div>
+          Posted: <%= time_ago_in_words(post.created_at) %> ago
+        </div>
       </li>
     <% end %>
   <% end %>

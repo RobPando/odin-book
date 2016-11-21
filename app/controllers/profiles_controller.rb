@@ -44,7 +44,8 @@ class ProfilesController < ApplicationController
                                     :description,
                                     :live,
                                     :hometown,
-                                    :nickname)
+                                    :nickname,
+                                    :avatar)
   end
 
   def load_user
