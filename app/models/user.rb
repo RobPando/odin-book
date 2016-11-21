@@ -32,10 +32,14 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+      if session["devise.facebook_data"]
+        new(session["devise.facebook_data"], without_protection: true) do |user|
+          user.attributes = params
+          user.valid?
+        end
+      else
+        super
       end
-    end
   end
 
   def make_profile
