@@ -37,7 +37,7 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
   def make_profile
     create_profile unless profile
   end
@@ -96,7 +96,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.avatar = auth.info.image
+      user.profile.avatar = auth.info.image
     end
   end
 end
