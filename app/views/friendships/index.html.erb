@@ -5,7 +5,7 @@
     <% if @friendships.any? %>
       <% @friendships.each do |friend| %>
     <li class="collection-item avatar" align="left">
-      <%= image_tag('user.png', class: 'circle') %>
+      <%= image_tag(friend.profile.avatar.url, class: 'circle') %>
       <span class="title"><%= link_to friend.full_name, user_profile_path(friend) %></span>
     </li>
      <% end %>
