@@ -31,7 +31,6 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   def self.new_with_session(params, session)
-    super.tap do |user|
       if session["devise.facebook_data"]
         new(session["devise.facebook_data"], without_protection: true) do |user|
           user.attributes = params
