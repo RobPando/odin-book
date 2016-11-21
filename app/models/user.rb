@@ -30,6 +30,14 @@ class User < ApplicationRecord
                                                                foreign_key: :friend_id
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
   def make_profile
     create_profile unless profile
   end
