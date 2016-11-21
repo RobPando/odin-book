@@ -31,11 +31,14 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      end
+  if session["devise.user_attributes"]
+    new(session["devise.user_attributes"], without_protection: true) do |user|
+      user.user_attributes = params
+      user.valid?
     end
+  else
+    super
+  end
   end
 
   def password_required?
