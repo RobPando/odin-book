@@ -1,6 +1,8 @@
+# User's profile
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_owner, only: [:edit, :update]
+
   def show
     load_user
     build_post
@@ -19,12 +21,12 @@ class ProfilesController < ApplicationController
   def update
     load_user
     load_profile
-
     insert_attributes_to_profile
+
     if @profile.save
       redirect_to user_profile_path(@user)
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -35,17 +37,17 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:gender,
-                                    :status,
-                                    :quote,
-                                    :birthdate,
-                                    :work,
-                                    :education,
-                                    :description,
-                                    :live,
-                                    :hometown,
-                                    :nickname,
-                                    :avatar)
+    params.fecth(:profile, {}).permit(:gender,
+                                      :status,
+                                      :quote,
+                                      :birthdate,
+                                      :work,
+                                      :education,
+                                      :description,
+                                      :live,
+                                      :hometown,
+                                      :nickname,
+                                      :avatar)
   end
 
   def load_user

@@ -2,9 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   # before_action :verify_owner, only: [:edit, :update]
   def index
-    @post = current_user.posts.build
-    @posts_feed = current_user.feed
-    @posts_feed += current_user.inverse_feed
+    build_post
+    home_feed
   end
 
   def show
@@ -22,11 +21,12 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.fetch(:post, {}).permit(:content)
   end
 
   def build_post
-    @post = current_user.posts.build(post_params)
+    @post ||= current_user.posts.build
+    @post.attributes = post_params
   end
 
   def load_post
@@ -39,5 +39,10 @@ class PostsController < ApplicationController
 
   def build_comment
     @comment = @post.comments.build
+  end
+
+  def home_feed
+    @posts_feed = current_user.feed
+    @posts_feed += current_user.inverse_feed
   end
 end

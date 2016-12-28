@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_requestee, only: [:update]
+
   def index
     load_user
     all_friends
@@ -9,9 +10,9 @@ class FriendshipsController < ApplicationController
 
   # Request friendship
   def create
-    find_user
-    current_user.send_friend_request(@user)
-    redirect_to @user
+    find_user_friending
+    current_user.send_friend_request(@user_friending)
+    redirect_to @user_friending
   end
 
   # Accept Friendship request
@@ -35,7 +36,7 @@ class FriendshipsController < ApplicationController
   end
 
   def all_friends
-    @friendships = @user.friends.all
+    @friendships ||= @user.friends.all
   end
 
   def all_inverse_friends
@@ -50,8 +51,8 @@ class FriendshipsController < ApplicationController
     @request.update(accepted: true)
   end
 
-  def find_user
-    @user = User.find(params[:friend_id])
+  def find_user_friending
+    @user_friending = User.find(params[:friend_id])
   end
 
   def verify_requestee

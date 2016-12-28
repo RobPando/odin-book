@@ -5,11 +5,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:search]
-      if params[:search].split(' ').size == 2
-        scoped_users
-      else
-        first_name_users
-      end
+      search_for_user
     else
       load_all_users
     end
@@ -51,6 +47,14 @@ class UsersController < ApplicationController
 
   def split_names
     @name = params[:search].split(' ')
+  end
+
+  def search_for_user
+    if params[:search].split(' ').size == 2
+      scoped_users
+    else
+      first_name_users
+    end
   end
 
   def verify_owner

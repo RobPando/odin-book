@@ -1,6 +1,8 @@
+# Hebrews 1:11
 class Post < ApplicationRecord
-  validates :content, presence: true
   belongs_to :user, inverse_of: :posts
-  default_scope -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
+  default_scope -> { order(created_at: :desc) }
+
+  validates :content, presence: true
 end
