@@ -29,17 +29,25 @@ nav ul li {
   color: red;
 }
 
-/* Body */
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-
+/* Footer stay at the bottom */
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.container {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -70px; 
+}
+.container:after {
+  content: "";
+  display: block;
+}
+.page-footer, .container:after {
+  height: 70px; 
+}
 /* Home Page */
 
 .init-page {
