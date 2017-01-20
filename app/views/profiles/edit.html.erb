@@ -9,101 +9,105 @@
       });
 </script>
 
-<center class="profile-form">
-<h4>Edit Profile</h4>
 <div class="row">
-  <%= form_for @profile, url: user_profile_path(@user), method: :put, html: { multipart: true } do |f| %>
-
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>File</span>
-        <%= f.file_field :avatar %>
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-
+  <div class="col s12">
+    <center class="profile-form">
+    <h5>Edit Profile</h5>
     <div class="row">
-      <div class="input-field col s12">
-       <%= f.label :nickname %>
-       <%= f.text_field :nickname %>
-      </div>
-    </div>
+      <%= form_for @profile, url: user_profile_path(@user), method: :put, html: { multipart: true } do |f| %>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">mode_edit</i>
-        <%= f.label :description, id: 'icon_prefix2' %>
-        <%= f.text_area :description, id: 'icon_prefix2', class: 'materialize-textarea' %>
-      </div>
-    </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <%= f.file_field :avatar %>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.label :work %>
-        <%= f.text_field :work %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+           <%= f.label :nickname %>
+           <%= f.text_field :nickname %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.label :education %>
-        <%= f.text_field :education %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :description, id: 'icon_prefix2' %>
+            <%= f.text_area :description, id: 'icon_prefix2', class: 'materialize-textarea' %>
+          </div>
+        </div>
 
-   
-    <div class="row">
-       <%= f.label :status %>
-      <div class="input-field col s12">
-        <%= f.select :status, options_for_select(relationship_options) %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label :work %>
+            <%= f.text_field :work %>
+          </div>
+        </div>
 
-    <div class="row">
-      <%= f.label :gender %>
-      <div class="input-field col s12">
-        <%= f.select :gender, options_for_select(['Male', 'Female'])  %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label :education %>
+            <%= f.text_field :education %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-       <%= f.label :live %>
-        <%= f.text_field :live %>
-      </div>
-    </div>
+       
+        <div class="row">
+           <%= f.label :status %>
+          <div class="input-field col s12">
+            <%= f.select :status, options_for_select(relationship_options) %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-       <%= f.label :hometown %>
-        <%= f.text_field :hometown %>
-      </div>
-    </div>
+        <div class="row">
+          <%= f.label :gender %>
+          <div class="input-field col s12">
+            <%= f.select :gender, options_for_select(['Male', 'Female'])  %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-       <%= f.label :birthdate %>
-       <%= f.date_field :birthdate, class: "datepicker" %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+           <%= f.label :live %>
+            <%= f.text_field :live %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-       <%= f.label :quote %>
-        <%= f.text_field :quote %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+           <%= f.label :hometown %>
+            <%= f.text_field :hometown %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="waves-effect waves-light btn">
-       <%= f.submit "Update Profile" %>
-      </div>
-       <%= link_to "Cancel", root_url, class: 'waves-effect waves-light btn' %>
-    </div>
-    
+        <div class="row">
+          <div class="input-field col s12">
+           <%= f.label :birthdate %>
+           <%= f.date_field :birthdate, class: "datepicker" %>
+          </div>
+        </div>
 
-  <% end %>
-</div>
-</center>
+        <div class="row">
+          <div class="input-field col s12">
+           <%= f.label :quote %>
+            <%= f.text_field :quote %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="waves-effect waves-light btn">
+           <%= f.submit "Update Profile" %>
+          </div>
+           <%= link_to "Cancel", root_url, class: 'waves-effect waves-light btn' %>
+        </div>
+        
+
+      <% end %>
+    </div>
+    </center>
+  </div>
+</div>    
