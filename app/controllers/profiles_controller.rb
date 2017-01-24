@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.fecth(:profile, {}).permit(:gender,
+    params.fetch(:profile, {}).permit(:gender,
                                       :status,
                                       :quote,
                                       :birthdate,
